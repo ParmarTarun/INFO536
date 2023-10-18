@@ -1,6 +1,6 @@
 import keras
 import matplotlib.pyplot as plt
-from keras.models import Sequential,Model,model_from_json
+from keras.models import Sequential, Model, model_from_json
 import numpy as np
 
 
@@ -15,6 +15,7 @@ def load_model():
     t.load_weights("generator.h5")
     return t
 
+
 def generate_image(model):
     '''
     Take the model as input and generate one image, codes below are based on template.py.
@@ -23,8 +24,9 @@ def generate_image(model):
     # Set the dimensions of the noise
     z_dim = 100
     z = np.random.normal(size=[1, z_dim])
-    generated_images = g.predict(z)
+    generated_images = model.predict(z)
     return generated_images
+
 
 if __name__ == "__main__":
     model = load_model()
